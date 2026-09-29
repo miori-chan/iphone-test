@@ -30,18 +30,17 @@ body{background:#fff0f3;display:flex;justify-content:center;align-items:center;m
 .falling-star{position:absolute;color:#ff8fab;animation:fallDown linear infinite;z-index:130;pointer-events:none;opacity:0.7}
 @keyframes fallDown{0%{transform:translateY(-20px) rotate(0);opacity:0}20%{opacity:.8}100%{transform:translateY(750px) rotate(360deg);opacity:0}}
 
-/* ===== หน้าจอ (ตกแต่งใหม่ น่ารักมินิมอล ละมุนยิ่งขึ้น) ===== */
+/* ===== หน้าจอ (ปรับปรุงสไตล์ให้น่ารักมินิมอล มีมิติ) ===== */
 .screen-content-area{position:relative;width:100%;flex:1;margin-top:84px;margin-bottom:75px;background:linear-gradient(180deg, #fff5f8 0%, #fff9fb 100%);overflow:hidden;display:flex;flex-direction:column}
 .page{flex:1;overflow-y:auto;padding:12px 14px}
 .page::-webkit-scrollbar{display:none}
 .tab{display:none;animation:fadeIn 0.3s ease-in-out}.tab.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 
-/* โปรไฟล์น่ารัก มินิมอล */
+/* โปรไฟล์ */
 .profile{display:flex;gap:12px;align-items:center;background:rgba(255, 255, 255, 0.7);padding:10px 12px;border-radius:20px;border:1px solid #ffe3ec;backdrop-filter:blur(5px);box-shadow:0 4px 15px rgba(255, 182, 193, 0.15)}
 .logo{width:62px;height:62px;flex-shrink:0;border-radius:50%;border:2.5px solid #ffb3c6;background:#ffe4e6 center/cover;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(255, 143, 171, 0.25)}
 .shop-name{font-size:16px;font-weight:700;color:#d0629a;display:flex;align-items:center;gap:4px}
-.status-badge{font-size:9px;background:#ffe0eb;color:#ff4d8d;padding:2px 8px;border-radius:10px;font-weight:500;display:inline-block;margin-top:2px}
 .shop-desc{font-size:10.5px;line-height:1.45;color:#b25883;margin-top:3px}
 
 /* แบนเนอร์ */
@@ -52,22 +51,22 @@ body{background:#fff0f3;display:flex;justify-content:center;align-items:center;m
 .dots{display:flex;justify-content:center;gap:5px;margin:8px 0 12px}
 .dots i{width:6px;height:6px;border-radius:50%;background:#ffd0df;transition:all 0.3s}.dots i:first-child{background:#ff7aa8;width:14px;border-radius:10px}
 
-/* การ์ดโอนเงิน */
+/* การ์ดการโอนเงิน */
 .pay-card{background:#ffffff;border:1px solid #ffd6e4;border-radius:20px;padding:12px;box-shadow:0 6px 16px rgba(255, 182, 193, 0.12)}
 .pay-head{font-size:12px;font-weight:600;color:#b04b7c;margin-bottom:10px;display:flex;align-items:center;gap:4px}
-.banks{display:flex;justify-content:space-between;margin-bottom:12px;padding:0 8px}
+.banks{display:flex;justify-content:space-around;margin-bottom:12px;padding:0 4px}
 .bank{text-align:center;font-size:9.5px;color:#9e4671;font-weight:500}
 .bank b{display:flex;width:38px;height:38px;border-radius:14px;margin:0 auto 4px;align-items:center;justify-content:center;color:#fff;font-size:10px;box-shadow:0 3px 6px rgba(0,0,0,0.06);transition:transform 0.2s}
 .pink-btn{width:100%;border:none;border-radius:16px;padding:10px;background:linear-gradient(135deg,#ff9ebb,#ff7aa8);color:#fff;font-size:12px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(255, 122, 168, 0.35);letter-spacing:0.3px;transition:all 0.2s}
 .pink-btn:active{transform:scale(0.97);opacity:.9}
 
-/* เมนูปุ่ม 3 ช่อง */
+/* ปุ่ม 3 ช่อง */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
 .mini{background:#fff;border:1px solid #ffe0ea;border-radius:16px;padding:12px 4px;text-align:center;font-size:10.5px;font-weight:500;color:#a2416f;cursor:pointer;box-shadow:0 4px 10px rgba(255,224,234,0.5);transition:all 0.2s}
 .mini:active{transform:scale(0.95);background:#fff0f5}
 .mini span{display:block;font-size:22px;margin-bottom:4px;filter:drop-shadow(0 2px 4px rgba(255,182,193,0.4))}
 
-/* หัวข้อและรายการสินค้า */
+/* หัวข้อและรายการ */
 .h{font-size:14px;font-weight:700;color:#d0629a;margin:6px 0 10px;display:flex;align-items:center;gap:6px}
 .item{background:#ffffff;border:1px solid #ffe0ea;border-radius:16px;padding:12px;margin-bottom:8px;font-size:12px;color:#782245;display:flex;justify-content:space-between;align-items:center;box-shadow:0 3px 8px rgba(255,224,234,0.4)}
 .item span{font-weight:500}
@@ -79,7 +78,7 @@ body{background:#fff0f3;display:flex;justify-content:center;align-items:center;m
 .tabbar button span{font-size:18px;filter:grayscale(1) opacity(.5);transition:all 0.2s}
 .tabbar button.active{color:#ff4d8d;font-weight:600}.tabbar button.active span{filter:none;transform:scale(1.15)}
 
-/* ===== หน้าต่างช่องทางโอนเงิน (Overlay & Sheet) ===== */
+/* ===== หน้าต่างช่องทางโอนเงิน ===== */
 .overlay{position:absolute;inset:0;background:rgba(120, 20, 60, 0.3);backdrop-filter:blur(3px);z-index:150;display:none;align-items:flex-end}
 .overlay.show{display:flex}
 .sheet{width:100%;max-height:90%;overflow-y:auto;background:#ffffff;border-radius:24px 24px 0 0;padding:16px;box-shadow:0 -5px 25px rgba(216, 17, 89, 0.15);animation:up .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
@@ -115,35 +114,31 @@ body{background:#fff0f3;display:flex;justify-content:center;align-items:center;m
         <!-- หน้าหลัก -->
         <div class="tab active" id="tab-home">
           <div class="profile">
-            <!-- โลโก้ร้าน: แตะเพื่ออัปโหลดรูป -->
-            <div class="logo" id="logo" onclick="pick('logo')">🎀</div>
+            <!-- โลโก้ร้าน: แตะเพื่ออัปโหลดรูป (หรือใส่ <img src="โลโก้.png"> ใน #logo) -->
+            <div class="logo" id="logo" onclick="pick('logo')">🐱</div>
             <div>
-              <div class="shop-name">Miori Store <span>✨</span></div>
-              <span class="status-badge">● พร้อมรับงานน้า 🌸</span>
-              <div class="shop-desc">บริการรับทำเว็บไซต์ร้านค้า<br>รับทำลายน้ำเริ่มต้น 39+ | รับทำป้าย 59+<br>สอบถามรายละเอียดเพิ่มเติมทักได้เลยน้า 💕</div>
+              <div class="shop-name">Miori 🎀</div>
+              <div class="shop-desc">ร้านมิโอริ ยินดีต้อนรับค่า ♡<br>บริการรับทำเว็บไซต์ร้านค้า<br>รับทำลายน้ำเริ่มต้น 39+<br>รับทำป้าย 59+<br>สอบถามรายละเอียดเพิ่มเติมทักได้เลยน้า</div>
             </div>
           </div>
 
-          <!-- แบนเนอร์ 1122x495: แตะเพื่ออัปโหลดรูป -->
-          <div class="banner" id="banner" onclick="pick('banner')">
-            Miori Shop 🎀
-            <small>แบนเนอร์ 1122×495 (แตะเพื่อใส่รูป)</small>
-          </div>
+          <!-- แบนเนอร์ 1122x495: แตะเพื่ออัปโหลดรูป (หรือใส่ <img src="แบนเนอร์.png"> ใน #banner) -->
+          <div class="banner" id="banner" onclick="pick('banner')">Miori Shop 🎀<small>แบนเนอร์ 1122×495 (แตะเพื่อใส่รูป)</small></div>
           <div class="dots"><i></i><i></i><i></i></div>
 
           <div class="pay-card">
-            <div class="pay-head">💳 ช่องทางการชำระเงิน</div>
+            <div class="pay-head">💳 ช่องทางการโอน</div>
             <div class="banks">
-              <div class="bank"><b style="background:linear-gradient(135deg, #7b4397, #dc2430)">SCB</b>SCB</div>
-              <div class="bank"><b style="background:linear-gradient(135deg, #11998e, #38ef7d)">K</b>KBank</div>
-              <div class="bank"><b style="background:linear-gradient(135deg, #1e3c72, #2a5298)">BBL</b>BBL</div>
-              <div class="bank"><b style="background:linear-gradient(135deg, #f8b500, #fceabb)">BAY</b>BAY</div>
+              <div class="bank"><b style="background:#6b3fa0">SCB</b>SCB</div>
+              <div class="bank"><b style="background:#2e9e5b">K</b>KBank</div>
+              <div class="bank"><b style="background:#3a5fc8">BBL</b>BBL</div>
+              <div class="bank"><b style="background:#e8b923">BAY</b>BAY</div>
             </div>
-            <button class="pink-btn" onclick="openPay()">✨ คลิกดูเลขบัญชี / โอนเงิน ✨</button>
+            <button class="pink-btn" onclick="openPay()">ช่องทางการโอนเงิน</button>
           </div>
 
           <div class="grid3">
-            <div class="mini" onclick="go('products')"><span>🛍️</span>สินค้าบริการ</div>
+            <div class="mini" onclick="go('products')"><span>🛍️</span>สินค้า / บริการ</div>
             <div class="mini"><span>🖼️</span>ตัวอย่างงาน</div>
             <div class="mini" onclick="go('contact')"><span>💬</span>ติดต่อเรา</div>
           </div>
@@ -151,18 +146,18 @@ body{background:#fff0f3;display:flex;justify-content:center;align-items:center;m
 
         <!-- สินค้า -->
         <div class="tab" id="tab-products">
-          <div class="h">🛍️ สินค้า / บริการของเรา</div>
+          <div class="h">🛍️ สินค้า / บริการ</div>
           <div class="item"><span>รับทำเว็บไซต์ร้านค้า</span><b>สอบถาม</b></div>
-          <div class="item"><span>รับทำลายน้ำสินค้า</span><b>เริ่มต้น 39.-</b></div>
-          <div class="item"><span>รับทำป้ายโฆษณา / ป้ายร้าน</span><b>เริ่มต้น 59.-</b></div>
+          <div class="item"><span>รับทำลายน้ำ</span><b>เริ่มต้น 39+</b></div>
+          <div class="item"><span>รับทำป้าย</span><b>เริ่มต้น 59+</b></div>
         </div>
 
         <!-- ติดต่อเรา -->
         <div class="tab" id="tab-contact">
-          <div class="h">💌 ช่องทางการติดต่อ</div>
+          <div class="h">💌 ติดต่อเรา</div>
           <div class="item"><span>Instagram</span><b>@miori_store</b></div>
-          <div class="item"><span>LINE Official</span><b>@miori</b></div>
-          <div class="item"><span>สอบถามเพิ่มเติมทักแชทได้เลยน้า</span><b>💖</b></div>
+          <div class="item"><span>LINE</span><b>@miori</b></div>
+          <div class="item"><span>สอบถามรายละเอียดเพิ่มเติมทักได้เลยน้า</span><b>💖</b></div>
         </div>
       </div>
 
@@ -176,10 +171,10 @@ body{background:#fff0f3;display:flex;justify-content:center;align-items:center;m
       <!-- หน้าต่างช่องทางโอนเงิน -->
       <div class="overlay" id="payOverlay" onclick="if(event.target===this)closePay()">
         <div class="sheet">
-          <div class="sheet-head">💖 ช่องทางการโอนเงิน <button class="close" onclick="closePay()">✕</button></div>
+          <div class="sheet-head">ช่องทางการโอนเงิน <button class="close" onclick="closePay()">✕</button></div>
           <!-- กรอบคิวอาร์โค้ด: แตะเพื่ออัปโหลดรูป QR -->
-          <div class="qr-frame" id="qr" onclick="pick('qr')">📷 แตะเพื่อใส่<br>รูปคิวอาร์โค้ด</div>
-          <div class="hint">สแกน QR Code หรือคัดลอกเลขบัญชีด้านล่างได้เลยน้า</div>
+          <div class="qr-frame" id="qr" onclick="pick('qr')">แตะเพื่อใส่<br>รูปคิวอาร์โค้ด</div>
+          <div class="hint">แตะที่กรอบเพื่อเปลี่ยนรูป QR</div>
 
           <div class="row"><div><div class="t">🏦 กสิกรไทย (KBANK)</div><div class="n">123-4-56789-0</div><div class="s">ชื่อบัญชี: มิโอริ สโตร์</div></div><button class="copy-btn" onclick="copyText('1234567890',this)">คัดลอก</button></div>
           <div class="row"><div><div class="t">👛 TrueMoney Wallet</div><div class="n">081-234-5678</div></div><button class="copy-btn" onclick="copyText('0812345678',this)">คัดลอก</button></div>
@@ -213,7 +208,7 @@ file.onchange=()=>{
 };
 
 function copyText(text,btn){
-  const done=()=>{const o=btn.innerText;btn.innerText='คัดลอกแล้ว! ✨';setTimeout(()=>btn.innerText=o,1500)};
+  const done=()=>{const o=btn.innerText;btn.innerText='คัดลอกแล้ว!';setTimeout(()=>btn.innerText=o,1500)};
   const fallback=()=>{const a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()};
   try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
 }
