@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Miori Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Prompt',sans-serif;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:#fff0f3;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:30px 20px;overflow:hidden}
+
+/* ===== โครงตัวเครื่อง (ไม่เปลี่ยนเลยตามข้อตกลง) ===== */
+.iphone-device{position:relative;width:375px;height:750px;background:linear-gradient(135deg,#fff0f5 0%,#ffcbf2 100%);border-radius:48px;box-shadow:0 25px 50px rgba(255,182,193,.3),inset 0 0 0 2px #fff,inset 0 0 0 4px #ffb3c6;display:flex;justify-content:center;align-items:center;animation:softSwing 4s ease-in-out infinite}
+@keyframes softSwing{0%,100%{transform:rotate(0)}50%{transform:rotate(2deg)}}
+.side-button{position:absolute;background:#ffb3c6;border-radius:2px}
+.silent-switch{left:-4px;top:90px;width:3px;height:18px}
+.volume-up{left:-4px;top:130px;width:3px;height:32px}
+.volume-down{left:-4px;top:175px;width:3px;height:32px}
+.power-button{right:-4px;top:135px;width:3px;height:45px}
+.iphone-screen-frame{position:relative;width:345px;height:726px;background:#fff9fb;border-radius:36px;overflow:hidden;display:flex;flex-direction:column;box-shadow:inset 0 0 6px rgba(255,192,203,.2)}
+.iphone6-top-bezel{position:absolute;top:0;left:0;width:100%;height:60px;background:#fff9fb;z-index:120;display:flex;align-items:center;justify-content:center;border-bottom:.5px solid #ffe4e6}
+.sensor-row{display:flex;align-items:center;justify-content:center;gap:12px}
+.camera-dot{width:9px;height:9px;background:#ff8fab;border-radius:50%}
+.speaker-slot{width:50px;height:4px;background:#ffb3c6;border-radius:3px}
+.status-bar{position:absolute;top:60px;left:0;width:100%;height:24px;background:#fff9fb;z-index:119;display:flex;justify-content:space-between;align-items:center;padding:0 16px;font-size:11px;font-weight:500;color:#d81159;border-bottom:.5px solid #ffe4e6}
+.iphone6-bottom-bezel{position:absolute;bottom:0;left:0;width:100%;height:75px;background:#fff9fb;z-index:120;display:flex;align-items:center;justify-content:center;border-top:.5px solid #ffe4e6}
+.home-button-ring{width:44px;height:44px;border:2px solid #ffb3c6;border-radius:50%;background:#fff;cursor:pointer;box-shadow:inset 0 1px 3px rgba(255,182,193,.2)}
+.home-button-ring:active{background:#ffe4e6}
+.falling-star{position:absolute;color:#ff8fab;animation:fallDown linear infinite;z-index:130;pointer-events:none;opacity:0.7}
+@keyframes fallDown{0%{transform:translateY(-20px) rotate(0);opacity:0}20%{opacity:.8}100%{transform:translateY(750px) rotate(360deg);opacity:0}}
+
+/* ===== หน้าจอ (ตกแต่งใหม่ น่ารักมินิมอล ละมุนยิ่งขึ้น) ===== */
+.screen-content-area{position:relative;width:100%;flex:1;margin-top:84px;margin-bottom:75px;background:linear-gradient(180deg, #fff5f8 0%, #fff9fb 100%);overflow:hidden;display:flex;flex-direction:column}
+.page{flex:1;overflow-y:auto;padding:12px 14px}
+.page::-webkit-scrollbar{display:none}
+.tab{display:none;animation:fadeIn 0.3s ease-in-out}.tab.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* โปรไฟล์น่ารัก มินิมอล */
+.profile{display:flex;gap:12px;align-items:center;background:rgba(255, 255, 255, 0.7);padding:10px 12px;border-radius:20px;border:1px solid #ffe3ec;backdrop-filter:blur(5px);box-shadow:0 4px 15px rgba(255, 182, 193, 0.15)}
+.logo{width:62px;height:62px;flex-shrink:0;border-radius:50%;border:2.5px solid #ffb3c6;background:#ffe4e6 center/cover;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(255, 143, 171, 0.25)}
+.shop-name{font-size:16px;font-weight:700;color:#d0629a;display:flex;align-items:center;gap:4px}
+.status-badge{font-size:9px;background:#ffe0eb;color:#ff4d8d;padding:2px 8px;border-radius:10px;font-weight:500;display:inline-block;margin-top:2px}
+.shop-desc{font-size:10.5px;line-height:1.45;color:#b25883;margin-top:3px}
+
+/* แบนเนอร์ */
+.banner{margin-top:12px;width:100%;aspect-ratio:1122/495;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#ffd6e8,#ffeef5);border:1.5px dashed #ffb3c6;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#d0629a;font-size:16px;font-weight:600;cursor:pointer;text-align:center;line-height:1.3;box-shadow:0 4px 12px rgba(255,194,214,0.3);transition:transform 0.2s}
+.banner:active{transform:scale(0.98)}
+.banner img,.logo img,.qr-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.banner small{display:block;font-size:9.5px;font-weight:400;opacity:.8;margin-top:2px;color:#c05387}
+.dots{display:flex;justify-content:center;gap:5px;margin:8px 0 12px}
+.dots i{width:6px;height:6px;border-radius:50%;background:#ffd0df;transition:all 0.3s}.dots i:first-child{background:#ff7aa8;width:14px;border-radius:10px}
+
+/* การ์ดโอนเงิน */
+.pay-card{background:#ffffff;border:1px solid #ffd6e4;border-radius:20px;padding:12px;box-shadow:0 6px 16px rgba(255, 182, 193, 0.12)}
+.pay-head{font-size:12px;font-weight:600;color:#b04b7c;margin-bottom:10px;display:flex;align-items:center;gap:4px}
+.banks{display:flex;justify-content:space-between;margin-bottom:12px;padding:0 8px}
+.bank{text-align:center;font-size:9.5px;color:#9e4671;font-weight:500}
+.bank b{display:flex;width:38px;height:38px;border-radius:14px;margin:0 auto 4px;align-items:center;justify-content:center;color:#fff;font-size:10px;box-shadow:0 3px 6px rgba(0,0,0,0.06);transition:transform 0.2s}
+.pink-btn{width:100%;border:none;border-radius:16px;padding:10px;background:linear-gradient(135deg,#ff9ebb,#ff7aa8);color:#fff;font-size:12px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(255, 122, 168, 0.35);letter-spacing:0.3px;transition:all 0.2s}
+.pink-btn:active{transform:scale(0.97);opacity:.9}
+
+/* เมนูปุ่ม 3 ช่อง */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.mini{background:#fff;border:1px solid #ffe0ea;border-radius:16px;padding:12px 4px;text-align:center;font-size:10.5px;font-weight:500;color:#a2416f;cursor:pointer;box-shadow:0 4px 10px rgba(255,224,234,0.5);transition:all 0.2s}
+.mini:active{transform:scale(0.95);background:#fff0f5}
+.mini span{display:block;font-size:22px;margin-bottom:4px;filter:drop-shadow(0 2px 4px rgba(255,182,193,0.4))}
+
+/* หัวข้อและรายการสินค้า */
+.h{font-size:14px;font-weight:700;color:#d0629a;margin:6px 0 10px;display:flex;align-items:center;gap:6px}
+.item{background:#ffffff;border:1px solid #ffe0ea;border-radius:16px;padding:12px;margin-bottom:8px;font-size:12px;color:#782245;display:flex;justify-content:space-between;align-items:center;box-shadow:0 3px 8px rgba(255,224,234,0.4)}
+.item span{font-weight:500}
+.item b{color:#ff4d8d;background:#ffeef4;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600}
+
+/* เมนูด้านล่าง (Tabbar) */
+.tabbar{height:56px;flex-shrink:0;background:rgba(255, 255, 255, 0.9);backdrop-filter:blur(8px);border-top:1px solid #ffe4e6;display:flex}
+.tabbar button{flex:1;border:none;background:none;font-size:10px;font-weight:500;color:#c9a0b3;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:all 0.2s}
+.tabbar button span{font-size:18px;filter:grayscale(1) opacity(.5);transition:all 0.2s}
+.tabbar button.active{color:#ff4d8d;font-weight:600}.tabbar button.active span{filter:none;transform:scale(1.15)}
+
+/* ===== หน้าต่างช่องทางโอนเงิน (Overlay & Sheet) ===== */
+.overlay{position:absolute;inset:0;background:rgba(120, 20, 60, 0.3);backdrop-filter:blur(3px);z-index:150;display:none;align-items:flex-end}
+.overlay.show{display:flex}
+.sheet{width:100%;max-height:90%;overflow-y:auto;background:#ffffff;border-radius:24px 24px 0 0;padding:16px;box-shadow:0 -5px 25px rgba(216, 17, 89, 0.15);animation:up .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
+@keyframes up{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:14px;font-weight:700;color:#d0629a}
+.close{border:none;background:#ffe4e6;color:#ff4d8d;width:26px;height:26px;border-radius:50%;cursor:pointer;font-weight:bold;display:flex;align-items:center;justify-content:center;font-size:12px}
+.qr-frame{width:150px;height:150px;margin:0 auto 6px;border:2px dashed #ff9fbf;border-radius:18px;background:#fff5f8;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10px;color:#d0629a;cursor:pointer;overflow:hidden;box-shadow:inset 0 0 8px rgba(255,159,191,0.2)}
+.hint{text-align:center;font-size:9.5px;color:#c9a0b3;margin-bottom:10px}
+.row{background:#fff0f5;border:1px solid #ffd6e4;border-radius:14px;padding:9px 12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.row .t{font-size:10px;font-weight:600;color:#880e4f}
+.row .n{font-family:monospace;font-size:13px;font-weight:700;color:#ff2e7e}
+.row .s{font-size:9.5px;color:#b04b7c}
+.copy-btn{background:linear-gradient(135deg,#ff8fb3,#ff6b9d);border:none;padding:6px 12px;border-radius:10px;font-size:10px;color:#fff;cursor:pointer;font-weight:600;white-space:nowrap;box-shadow:0 2px 6px rgba(255,107,157,0.3)}
+.copy-btn:active{opacity:0.85}
+.note-row{background:#fff;border:1px dashed #ff9fbf}
+.note-row .n{font-family:'Prompt',sans-serif;font-size:11px}
+</style>
+</head>
+<body>
+<div class="iphone-device">
+  <div class="side-button silent-switch"></div><div class="side-button volume-up"></div>
+  <div class="side-button volume-down"></div><div class="side-button power-button"></div>
+
+  <div class="iphone-screen-frame" id="iphoneScreen">
+    <div class="iphone6-top-bezel"><div class="sensor-row"><div class="camera-dot"></div><div class="speaker-slot"></div></div></div>
+    <div class="status-bar">
+      <div>▂▄▆ AIS ᯤ</div><div>07:25</div><div>66% ▮▮▮▯</div>
+    </div>
+
+    <div class="screen-content-area">
+      <div class="page">
+
+        <!-- หน้าหลัก -->
+        <div class="tab active" id="tab-home">
+          <div class="profile">
+            <!-- โลโก้ร้าน: แตะเพื่ออัปโหลดรูป -->
+            <div class="logo" id="logo" onclick="pick('logo')">🎀</div>
+            <div>
+              <div class="shop-name">Miori Store <span>✨</span></div>
+              <span class="status-badge">● พร้อมรับงานน้า 🌸</span>
+              <div class="shop-desc">บริการรับทำเว็บไซต์ร้านค้า<br>รับทำลายน้ำเริ่มต้น 39+ | รับทำป้าย 59+<br>สอบถามรายละเอียดเพิ่มเติมทักได้เลยน้า 💕</div>
+            </div>
+          </div>
+
+          <!-- แบนเนอร์ 1122x495: แตะเพื่ออัปโหลดรูป -->
+          <div class="banner" id="banner" onclick="pick('banner')">
+            Miori Shop 🎀
+            <small>แบนเนอร์ 1122×495 (แตะเพื่อใส่รูป)</small>
+          </div>
+          <div class="dots"><i></i><i></i><i></i></div>
+
+          <div class="pay-card">
+            <div class="pay-head">💳 ช่องทางการชำระเงิน</div>
+            <div class="banks">
+              <div class="bank"><b style="background:linear-gradient(135deg, #7b4397, #dc2430)">SCB</b>SCB</div>
+              <div class="bank"><b style="background:linear-gradient(135deg, #11998e, #38ef7d)">K</b>KBank</div>
+              <div class="bank"><b style="background:linear-gradient(135deg, #1e3c72, #2a5298)">BBL</b>BBL</div>
+              <div class="bank"><b style="background:linear-gradient(135deg, #f8b500, #fceabb)">BAY</b>BAY</div>
+            </div>
+            <button class="pink-btn" onclick="openPay()">✨ คลิกดูเลขบัญชี / โอนเงิน ✨</button>
+          </div>
+
+          <div class="grid3">
+            <div class="mini" onclick="go('products')"><span>🛍️</span>สินค้าบริการ</div>
+            <div class="mini"><span>🖼️</span>ตัวอย่างงาน</div>
+            <div class="mini" onclick="go('contact')"><span>💬</span>ติดต่อเรา</div>
+          </div>
+        </div>
+
+        <!-- สินค้า -->
+        <div class="tab" id="tab-products">
+          <div class="h">🛍️ สินค้า / บริการของเรา</div>
+          <div class="item"><span>รับทำเว็บไซต์ร้านค้า</span><b>สอบถาม</b></div>
+          <div class="item"><span>รับทำลายน้ำสินค้า</span><b>เริ่มต้น 39.-</b></div>
+          <div class="item"><span>รับทำป้ายโฆษณา / ป้ายร้าน</span><b>เริ่มต้น 59.-</b></div>
+        </div>
+
+        <!-- ติดต่อเรา -->
+        <div class="tab" id="tab-contact">
+          <div class="h">💌 ช่องทางการติดต่อ</div>
+          <div class="item"><span>Instagram</span><b>@miori_store</b></div>
+          <div class="item"><span>LINE Official</span><b>@miori</b></div>
+          <div class="item"><span>สอบถามเพิ่มเติมทักแชทได้เลยน้า</span><b>💖</b></div>
+        </div>
+      </div>
+
+      <!-- เมนูล่าง -->
+      <div class="tabbar">
+        <button class="active" data-tab="home" onclick="go('home')"><span>🏠</span>หน้าหลัก</button>
+        <button data-tab="products" onclick="go('products')"><span>🛍️</span>สินค้า</button>
+        <button data-tab="contact" onclick="go('contact')"><span>✉️</span>ติดต่อเรา</button>
+      </div>
+
+      <!-- หน้าต่างช่องทางโอนเงิน -->
+      <div class="overlay" id="payOverlay" onclick="if(event.target===this)closePay()">
+        <div class="sheet">
+          <div class="sheet-head">💖 ช่องทางการโอนเงิน <button class="close" onclick="closePay()">✕</button></div>
+          <!-- กรอบคิวอาร์โค้ด: แตะเพื่ออัปโหลดรูป QR -->
+          <div class="qr-frame" id="qr" onclick="pick('qr')">📷 แตะเพื่อใส่<br>รูปคิวอาร์โค้ด</div>
+          <div class="hint">สแกน QR Code หรือคัดลอกเลขบัญชีด้านล่างได้เลยน้า</div>
+
+          <div class="row"><div><div class="t">🏦 กสิกรไทย (KBANK)</div><div class="n">123-4-56789-0</div><div class="s">ชื่อบัญชี: มิโอริ สโตร์</div></div><button class="copy-btn" onclick="copyText('1234567890',this)">คัดลอก</button></div>
+          <div class="row"><div><div class="t">👛 TrueMoney Wallet</div><div class="n">081-234-5678</div></div><button class="copy-btn" onclick="copyText('0812345678',this)">คัดลอก</button></div>
+          <div class="row note-row"><div><div class="t">📝 ข้อความใส่โน้ตสลิป</div><div class="n" id="noteTxt">miori store</div></div><button class="copy-btn" onclick="copyText(document.getElementById('noteTxt').innerText,this)">คัดลอก</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="iphone6-bottom-bezel"><div class="home-button-ring" onclick="closePay();go('home')"></div></div>
+  </div>
+</div>
+<input type="file" id="file" accept="image/*" hidden>
+
+<script>
+function go(t){
+  document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active');
+  document.querySelectorAll('.tabbar button').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));
+}
+function openPay(){document.getElementById('payOverlay').classList.add('show')}
+function closePay(){document.getElementById('payOverlay').classList.remove('show')}
+
+let target=null;
+const file=document.getElementById('file');
+function pick(id){target=id;file.value='';file.click()}
+file.onchange=()=>{
+  const f=file.files[0]; if(!f||!target)return;
+  const r=new FileReader();
+  r.onload=()=>{const el=document.getElementById(target);el.innerHTML='<img src="'+r.result+'" alt="">';if(target==='logo')el.style.fontSize='0'};
+  r.readAsDataURL(f);
+};
+
+function copyText(text,btn){
+  const done=()=>{const o=btn.innerText;btn.innerText='คัดลอกแล้ว! ✨';setTimeout(()=>btn.innerText=o,1500)};
+  const fallback=()=>{const a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()};
+  try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+}
+
+window.onload=function(){
+  const s=document.getElementById('iphoneScreen');
+  for(let i=0;i<12;i++){
+    const st=document.createElement('div');
+    st.className='falling-star';st.textContent='★';
+    st.style.left=Math.random()*320+'px';st.style.top='-20px';
+    st.style.fontSize=(Math.random()*8+8)+'px';
+    st.style.animationDuration=(Math.random()*4+4)+'s';
+    st.style.animationDelay=(Math.random()*5)+'s';
+    s.appendChild(st);
+  }
+};
+</script>
+</body>
+</html>
